@@ -7,7 +7,7 @@ download() {
 
 build=true
 debug=true
-backup=true
+backup=false
 restart=false
 
 version=1.16.5
