@@ -96,7 +96,7 @@ do
         echo 'Start the backup.'
         backup_file_name=$(date +"%y%m%d-%H%M%S")
         mkdir -p '.backup'
-        tar zcf ".backup/$backup_file_name.tar.gz" . --exclude='./*.jar' --exclude='*.gz' --exclude='./cache' --exclude='./backup' --files-from='./plugins'
+        tar --exclude='./.backup' --exclude='./.jar' --exclude='*.gz' --exclude='./cache' -zcf ".backup/$backup_file_name.tar.gz" .
         echo 'The backup is complete.'
     fi
 
