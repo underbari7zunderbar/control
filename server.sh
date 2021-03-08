@@ -7,7 +7,7 @@ download() {
 
 build=true
 debug=true
-backup=false
+backup=true
 restart=false
 
 version=1.16.5
@@ -27,17 +27,20 @@ script=$(basename "$0")
 server_folder="$project_folder/.${script%.*}"
 mkdir -p "$server_folder"
 mkdir -p "$server_folder/plugins"
+mkdir -p "$server_folder/.jar"
+
 cd "$server_folder" || exit
 
-jar_result=$(download $jar_url .)
+# Download jar
+jar_result=$(download "$jar_url" "./.jar")
 jar=$(grep -oG "‘.*’" <<< $jar_result)
 jar="${jar:1:-1}"
+echo "$jar_result"
 
-echo $jar_result
-
+# Download plugins
 for i in "${download_plugins[@]}"
 do
-    echo $(download $i ./plugins)
+    download "$i" "./plugins"
 done
 
 jvm_arguments=(
@@ -89,10 +92,11 @@ do
 
     if ($backup)
     then
+        read -r -t 5 -p "Press Enter to start the backup immediately `echo $'\n> '`"
         echo 'Start the backup.'
         backup_file_name=$(date +"%y%m%d-%H%M%S")
-        mkdir -p 'backup'
-        tar --exclude='*.jar' --exclude='*.gz' --exclude='./cache' --exclude='./backup' -zcf "./backup/$backup_file_name.tar.gz" .
+        mkdir -p '.backup'
+        tar zcf ".backup/$backup_file_name.tar.gz" . --exclude='./*.jar' --exclude='*.gz' --exclude='./cache' --exclude='./backup' --files-from='./plugins'
         echo 'The backup is complete.'
     fi
 
