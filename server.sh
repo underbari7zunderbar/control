@@ -34,12 +34,12 @@ script=$(basename "$0")
 server_folder="$project_folder/.${script%.*}"
 mkdir -p "$server_folder"
 mkdir -p "$server_folder/plugins"
-mkdir -p "$server_folder/.jar"
+mkdir -p "$HOME/.minecraft/servers"
 
 cd "$server_folder" || exit
 
 # Download jar
-jar_result=$(download "$jar_url" "./.jar")
+jar_result=$(download "$jar_url" "$HOME/.minecraft/servers")
 jar=$(grep -oG "‘.*’" <<< $jar_result)
 jar="${jar:1:-1}"
 echo "$jar_result"
@@ -118,7 +118,7 @@ do
     echo 'Start the backup.'
     backup_file_name=$(date +"%y%m%d-%H%M%S")
     mkdir -p '.backup'
-    tar --exclude='./.backup' --exclude='./.jar' --exclude='*.gz' --exclude='./cache' -zcf ".backup/$backup_file_name.tar.gz" .
+    tar --exclude='./.backup' --exclude='*.gz' --exclude='./cache' -zcf ".backup/$backup_file_name.tar.gz" .
     echo 'The backup is complete.'
   fi
 
