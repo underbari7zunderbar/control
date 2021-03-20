@@ -22,11 +22,11 @@ if [ ! -f "$server_config" ]
 then
     cat << EOF > $server_config
 jar_url="https://papermc.io/api/v1/paper/$version/latest/download"
-debug=false
+debug=true
 debug_port=5005
-backup=true
-restart=true
-memory=8
+backup=false
+restart=false
+memory=4
 plugins=(
 EOF
     for plugin in "${plugins[@]}"
