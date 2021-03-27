@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ./gradlew clean copyToServer
 
@@ -28,7 +28,7 @@ debug=true
 debug_port=5005
 backup=false
 restart=false
-memory=4
+memory=2
 plugins=(
 EOF
     for plugin in "${plugins[@]}"
