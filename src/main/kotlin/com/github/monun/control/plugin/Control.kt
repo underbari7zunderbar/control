@@ -12,6 +12,8 @@ sealed class Control<T>(val name: String, val type: Class<*>, val default: T) {
     object BREAKING : Control<Boolean>("breaking", java.lang.Boolean::class.java, true)
     object PLACEMENT : Control<Boolean>("placement", java.lang.Boolean::class.java, true)
     object CRAFTING : Control<Boolean>("crafting", java.lang.Boolean::class.java, true)
+    object DROP : Control<Boolean>("drop", java.lang.Boolean::class.java, true)
+    object PICKUP : Control<Boolean>("pickup", java.lang.Boolean::class.java, true)
     object JOIN_MESSAGE : Control<Boolean>("join-message", java.lang.Boolean::class.java, true)
     object QUIT_MESSAGE : Control<Boolean>("quit-message", java.lang.Boolean::class.java, true)
 
@@ -41,6 +43,8 @@ sealed class Control<T>(val name: String, val type: Class<*>, val default: T) {
                 BREAKING,
                 PLACEMENT,
                 CRAFTING,
+                DROP,
+                PICKUP,
                 JOIN_MESSAGE,
                 QUIT_MESSAGE
             )

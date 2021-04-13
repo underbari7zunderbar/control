@@ -40,8 +40,6 @@ class EventListener(
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     fun onPlayerMove(event: PlayerMoveEvent) {
-        @Suppress("DEPRECATION")
-        if (!event.player.isOnGround) return
         event.control(Control.MOVEMENT, event.player)
     }
 
@@ -51,6 +49,9 @@ class EventListener(
 
         if (entity is Player) {
             event.control(Control.DAMAGE, entity)
+
+            if (event.isCancelled)
+                entity.fireTicks = 0
         }
     }
 
@@ -116,6 +117,16 @@ class EventListener(
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     fun onCraftingItem(event: CraftItemEvent) {
         event.control(Control.BREAKING, event.whoClicked as Player)
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    fun onPlayerAttemptPickupItem(event: PlayerAttemptPickupItemEvent) {
+        event.control(Control.PICKUP, event.player)
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    fun onPlayerDropItem(event: PlayerDropItemEvent) {
+        event.control(Control.DROP, event.player)
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
