@@ -116,7 +116,7 @@ class EventListener(
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     fun onCraftingItem(event: CraftItemEvent) {
-        event.control(Control.BREAKING, event.whoClicked as Player)
+        event.control(Control.CRAFTING, event.whoClicked as Player)
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
