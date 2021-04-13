@@ -13,14 +13,23 @@ object KommandCTL {
         KommandCTL.plugin = plugin
 
         builder.register("ctl") {
-            then("control" to ControlArgument, "value" to ValueArgument) {
+            then("control" to ControlArgument) {
+                then("value" to ValueArgument) {
+                    executes {
+                        val sender = it.sender
+                        val control = it.parseArgument<Control<*>>("control")
+                        val value = it.parseArgument<Any>("value")
+
+                        plugin.unsafeControl(control, value)
+                        sender.sendFeedback("${control.name} = $value")
+                    }
+                }
+
                 executes {
                     val sender = it.sender
                     val control = it.parseArgument<Control<*>>("control")
-                    val value = it.parseArgument<Any>("value")
 
-                    plugin.unsafeControl(control, value)
-                    sender.sendFeedback("${control.name} = $value")
+                    sender.sendFeedback("${control.name} = ${plugin.control(control)}")
                 }
             }
         }
