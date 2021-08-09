@@ -1,6 +1,6 @@
 package com.github.monun.control.plugin
 
-import com.github.monun.kommand.kommand
+import io.github.monun.kommand.kommand
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File

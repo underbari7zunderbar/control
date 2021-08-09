@@ -1,8 +1,6 @@
-name: $pluginName
-main: $pluginMain
-depend: [ Kotlin ]
-api-version: '1.16'
-version: $version
-commands:
-  ctl:
-    permission: 'control'
+name: ${pluginName}
+version: ${version}
+main: ${group}.${packageName}.plugin.${pluginName}Plugin
+api-version: 1.17
+libraries:
+  - io.github.monun:kommand:2.4.1
