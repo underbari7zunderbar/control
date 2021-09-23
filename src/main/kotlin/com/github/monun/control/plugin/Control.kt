@@ -3,19 +3,19 @@ package com.github.monun.control.plugin
 import com.google.common.collect.ImmutableList
 
 sealed class Control<T>(val name: String, val type: Class<*>, val default: T) {
-    object CHAT : Control<Boolean>("chat", java.lang.Boolean::class.java, true)
-    object COMMAND : Control<Boolean>("command", java.lang.Boolean::class.java, true)
-    object MOVEMENT : Control<Boolean>("movement", java.lang.Boolean::class.java, true)
-    object ATTACK : Control<Boolean>("attack", java.lang.Boolean::class.java, true)
-    object DAMAGE : Control<Boolean>("damage", java.lang.Boolean::class.java, true)
-    object INTERACTION : Control<Boolean>("interaction", java.lang.Boolean::class.java, true)
-    object BREAKING : Control<Boolean>("breaking", java.lang.Boolean::class.java, true)
-    object PLACEMENT : Control<Boolean>("placement", java.lang.Boolean::class.java, true)
-    object CRAFTING : Control<Boolean>("crafting", java.lang.Boolean::class.java, true)
-    object DROP : Control<Boolean>("drop", java.lang.Boolean::class.java, true)
-    object PICKUP : Control<Boolean>("pickup", java.lang.Boolean::class.java, true)
-    object JOIN_MESSAGE : Control<Boolean>("join-message", java.lang.Boolean::class.java, true)
-    object QUIT_MESSAGE : Control<Boolean>("quit-message", java.lang.Boolean::class.java, true)
+    object Chat : Control<Boolean>("chat", java.lang.Boolean::class.java, true)
+    object Command : Control<Boolean>("command", java.lang.Boolean::class.java, true)
+    object Movemnt : Control<Boolean>("movement", java.lang.Boolean::class.java, true)
+    object Attack : Control<Boolean>("attack", java.lang.Boolean::class.java, true)
+    object Damage : Control<Boolean>("damage", java.lang.Boolean::class.java, true)
+    object Interaction : Control<Boolean>("interaction", java.lang.Boolean::class.java, true)
+    object Breaking : Control<Boolean>("breaking", java.lang.Boolean::class.java, true)
+    object Placement : Control<Boolean>("placement", java.lang.Boolean::class.java, true)
+    object Crafting : Control<Boolean>("crafting", java.lang.Boolean::class.java, true)
+    object Drop : Control<Boolean>("drop", java.lang.Boolean::class.java, true)
+    object Pickup : Control<Boolean>("pickup", java.lang.Boolean::class.java, true)
+    object JoinMessage : Control<Boolean>("join-message", java.lang.Boolean::class.java, true)
+    object QuitMessage : Control<Boolean>("quit-message", java.lang.Boolean::class.java, true)
 
     val permission = "control.$name"
 
@@ -34,19 +34,19 @@ sealed class Control<T>(val name: String, val type: Class<*>, val default: T) {
     companion object {
         val values by lazy {
             ImmutableList.of(
-                CHAT,
-                COMMAND,
-                MOVEMENT,
-                ATTACK,
-                DAMAGE,
-                INTERACTION,
-                BREAKING,
-                PLACEMENT,
-                CRAFTING,
-                DROP,
-                PICKUP,
-                JOIN_MESSAGE,
-                QUIT_MESSAGE
+                Chat,
+                Command,
+                Movemnt,
+                Attack,
+                Damage,
+                Interaction,
+                Breaking,
+                Placement,
+                Crafting,
+                Drop,
+                Pickup,
+                JoinMessage,
+                QuitMessage
             )
         }
     }

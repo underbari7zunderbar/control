@@ -11,11 +11,13 @@ object KommandCTL {
         this.plugin = plugin
 
         kommand.register("ctl") {
+            permission("ctl.commands")
+
             val controlArgument = dynamic { _, input ->
                 Control.values.find { it.name == input }
             }.apply {
                 suggests {
-                    suggest(Control.Companion::values, { it.name })
+                    suggest(Control.values.map { it.name })
                 }
             }
 

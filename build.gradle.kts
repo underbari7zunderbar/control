@@ -24,7 +24,7 @@ dependencies {
 
     implementation(kotlin("stdlib"))
 //    implementation("io.github.monun:tap-api:4.1.3")
-    implementation("io.github.monun:kommand-api:2.4.1")
+    implementation("io.github.monun:kommand-api:2.6.6")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
