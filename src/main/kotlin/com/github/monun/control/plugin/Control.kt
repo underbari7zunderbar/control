@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableList
 sealed class Control<T>(val name: String, val type: Class<*>, val default: T) {
     object Chat : Control<Boolean>("chat", java.lang.Boolean::class.java, true)
     object Command : Control<Boolean>("command", java.lang.Boolean::class.java, true)
-    object Movemnt : Control<Boolean>("movement", java.lang.Boolean::class.java, true)
+    object Movement : Control<Boolean>("movement", java.lang.Boolean::class.java, true)
     object Attack : Control<Boolean>("attack", java.lang.Boolean::class.java, true)
     object Damage : Control<Boolean>("damage", java.lang.Boolean::class.java, true)
     object Interaction : Control<Boolean>("interaction", java.lang.Boolean::class.java, true)
@@ -36,7 +36,7 @@ sealed class Control<T>(val name: String, val type: Class<*>, val default: T) {
             ImmutableList.of(
                 Chat,
                 Command,
-                Movemnt,
+                Movement,
                 Attack,
                 Damage,
                 Interaction,
