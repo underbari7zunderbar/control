@@ -39,7 +39,7 @@ class EventListener(
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     fun onPlayerMove(event: PlayerMoveEvent) {
-        event.control(Control.Movemnt, event.player)
+        event.control(Control.Movement, event.player)
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
